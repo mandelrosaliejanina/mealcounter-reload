@@ -2,6 +2,12 @@
 //Make sure that import.sql is executed
 GET http://localhost:8080/api/person
 
+//Request for Helath Check
+####
+GET http://152.70.175.53/api/person
+
+####
+GET http://152.70.175.53:8080/q/health
 
 ####
 
@@ -30,11 +36,20 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/api/nfccard/create
+POST http://152.70.175.53/api/nfccard/create
 Content-Type: application/json
 
 {
-  "nfcId": "34z87zfwij3wrn",
+  "nfcId": "testest",
+  "registerDateTime": 1643362458
+}
+
+###
+POST http://152.70.175.53/api/nfccard/create
+Content-Type: application/json
+
+{
+  "nfcId": "nfcid",
   "registerDateTime": 1643362458
 }
 
