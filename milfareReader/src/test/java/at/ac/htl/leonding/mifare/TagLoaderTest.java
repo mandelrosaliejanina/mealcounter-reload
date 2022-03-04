@@ -4,6 +4,7 @@ import at.ac.htl.leonding.milfare.TagLoader;
 import org.junit.jupiter.api.Test;
 
 class TagLoaderTest {
+/*
 
     @Test
     public void testSendData(){
@@ -23,5 +24,6 @@ class TagLoaderTest {
             e.printStackTrace();
         }
     }
+*/
 
 }
