@@ -1,0 +1,70 @@
+= Besprechungsprotokoll 22.05.2021
+Sandy Tang, Rosalie Mandel, Kelly Tran
+1.0, 06.05.2021: Some notes
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+
+ifdef::backend-html5[]
+
+icon:file-text-o[link=https://raw.githubusercontent.com/htl-leonding-college/asciidoctor-docker-template/master/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/htl-leonding-college/asciidoctor-docker-template] ‏ ‏ ‎
+icon:home[link=https://htl-leonding.github.io/]
+endif::backend-html5[]
+
+
+.Teilnehmer
+|===
+|anwesend |Verteiler
+
+|Vorname Nachname
+|
+|TK
+|
+|TS
+|
+|MR
+|
+
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|Auf Discord
+
+|von-bis
+|Sa. 22.05.2021
+|Dauer
+|3h 30min
+|===
+
+
+
+== Begriffe / Befehle
+* ATR = Answer To Reset
+*  Script - ./package.sh (wenn Änderung im Code durchgeführt werden)
+** Script zum Kompilieren und Ausführen eines jar-Files
+* Script - ./run.sh
+** Script nur fürs Ausführen eines jar-Files
+
+
+== Die Commits, die wir während der Session durchgeführt haben
+* https://github.com/htl-leonding-project/nfc-meal-counter/commit/5334baad462b17da92026611700473cade536335
+* https://github.com/htl-leonding-project/nfc-meal-counter/commit/1de9af0673da3b2c191ced3250c7c98fd3340a79
+
+
+== Besprochene Themen
+* Jede einzelende Karte einlesen lassen und die ID, von den einzelnen Karten davon aufschreiben.
+* Wir haben mit BIBO gearbeitet, den Link befindet sich im README.md im apdu4j-demo - Projekt.
+** Link: https://www.ssatp.org/sites/ssatp/files/publications/Toolkits/Fares%20Toolkit%20content/fare-collection-technologies/smart-cards/proximity-card-(bibo).html
+* Bis zum nächsten Mal müssen wir eine Schleife programmieren, die darauf wartet ob eine Karte schon drauf gelegt wurde,
+wenn ja dann sollte es angezeigt werden.
+
+
+
+
+
+
+

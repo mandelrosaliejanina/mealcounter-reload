@@ -1,0 +1,78 @@
+= Besprechungsprotokoll 28.05.2021
+Sandy Tang, Rosalie Mandel, Kelly Tran
+1.0, 06.05.2021: Some notes
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+
+ifdef::backend-html5[]
+
+icon:file-text-o[link=https://raw.githubusercontent.com/htl-leonding-college/asciidoctor-docker-template/master/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/htl-leonding-college/asciidoctor-docker-template] ‏ ‏ ‎
+icon:home[link=https://htl-leonding.github.io/]
+endif::backend-html5[]
+
+
+.Teilnehmer
+|===
+|anwesend |Verteiler
+
+|Vorname Nachname
+|
+|TS
+|
+|MR
+|
+|TK
+|
+
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|In der Schule, Präzensunterricht
+
+|von-bis
+|Fr. 18.06.2021
+|Dauer
+|1h 30min
+|===
+
+
+== Besprochenes Thema
+* Wir haben mit Prof. Stütz über unsere nächsten Schritte bzw. Anforderungen geredet.
+
+image::skizze01.jpeg[]
+
+* Prof. Stütz hat uns eine Skizze aufgezeichnet bei dem ging es darum, dass unser System mit einem Quarkus Backend und einem Angular Frontend,
+die Karten_Id von dem RFID und eine CSV-Datei der Schüler zugeschickt bekommt. Das System kontrolliert dann ob die Karten_ID in der Datenbank
+vorhanden ist und wenn sie vorhanden ist, werden die Daten bearbeitet
+und dann in eine Liste von Schüler und Kosunamtion gespeichert und schließlich wird eine Pivot Tabelle  erstellt.
+
+image::skizze02.jpeg[]
+
+* In der zweiten Skizze wird eine Pivot Tabelle dargestellt, es werden Jahr,Klasse(Eintrittsjahr) und Monat
+als Dropdowns dargestellt. In der einen Spalte werden Name 1 & Name 2 nach Monat sortiert.
+
+---
+
+* Wir haben uns zusätzlich noch Fragen aufgeschrieben, die wir danach bearbeiten sollten.
+** Fragen:
+- Derzeit wird eine Karte nur einmal erfasst auch wenn mehrmals die Karte eingelesen wird, oder muss die Karte mehrmals erfasst werden?
+- Ist es notwendig ein Signal eine mehrmafache Benutzung durch ein Signal(Akustisch)/visuell(Lampe)?
+- Welche Auswertungen(Reports,Exports) sind notwendig?
+*** Export von CSV Daten für Pivot Tabelle
+***  Einen Bericht als Website (Klasse pro Monat)
+
+* Anforderung
+** Wird eine Karte auf den NFC Reader aufgelegt, die das System noch nicht kennt, so wird die Karte in der Tabelle "NFC_INFO" eingetragen
+
+== Was haben wir gemacht
+* Wir haben angefangen die einzelnen Anforderungen und Fragen abzuarbeiten.
+
+
+
+
+

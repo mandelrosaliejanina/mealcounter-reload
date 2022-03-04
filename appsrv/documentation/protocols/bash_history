@@ -1,0 +1,52 @@
+sudo raspi-config
+sudo apt-get update
+sudo apt-get -y install subversion autoconf debhelper flex libusb-dev libpcsclite-dev libpcsclite1 libccid pcscd pcsc-tools libpcsc-perl libusb-1.0-0-dev libtool libssl-dev cmake checkinstall
+wget https://github.com/nfc-tools/libnfc/releases/download/libnfc-1.8.0/libnfc-doc-1.8.0.zip
+tar -xvzf
+ll
+ls
+ls -l
+chmod +x ./libnfc-doc-1.8.0.zip 
+ls
+ls -l
+wget https://github.com/nfc-tools/libnfc/releases/download/libnfc-1.8.0/libnfc-1.8.0.tar.bz2
+ls -l
+unzip libnfc-doc-1.8.0.zip 
+ls -l
+cd libnfc-doc-1.8.0/
+ls -l
+nfc-list
+./configure --with-drivers=acr122_usb
+cd ..
+cd libnfc-1.8.0/
+./configure --with-drivers=acr122_usb
+make
+sudo make install
+sudo nfc-list
+sudo sh -c "echo /usr/local/lib > /etc/ld.so.conf.d/usr-local-lib.conf"
+sudo ldconfig
+sudo nfc-list
+mem
+diskfree
+df
+df -h
+sudo raspi-config
+java -version
+java --version
+sudo apt update
+sudo apt dist-upgrade
+sudo apt install default-jdk
+java -version
+sudo update-alternatives --config java
+env 
+env | grep JAVA
+sudo update-alternatives --config java
+sudo nano /etc/environment 
+source /etc/environment 
+env | grep JAVA
+echo $JAVA_HOME
+env
+sudo apt install maven
+mvn -v
+cat .bash_history 
+logout

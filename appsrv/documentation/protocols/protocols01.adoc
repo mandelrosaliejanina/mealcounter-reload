@@ -1,0 +1,98 @@
+= Besprechungsprotokoll 29.10.2020
+Kelly Tran
+1.0, 2020-11-06: Some notes
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/htl-leonding-college/asciidoctor-docker-template/master/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/htl-leonding-college/asciidoctor-docker-template] ‏ ‏ ‎
+icon:home[link=https://htl-leonding.github.io/]
+endif::backend-html5[]
+
+
+
+.Teilnehmer
+|===
+|anwesend |Verteiler
+
+|Vorname Nachname
+|
+
+|TK
+|
+
+|TS
+|
+|MR
+|
+
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|Online-Unterricht (Discord)
+
+|von-bis
+|Mo. 15.01.2021
+|Dauer
+|30 min
+|===
+
+
+
+== Besprochene Themen
+
+* Uns wurde vom Prof. Stütz als erstes beauftragt, dass wir die IP-Adresse des Raspberry Pi's herausfinden sollte.
+* Anschließend mussten wir das Raspberry Pi in unserem Projekt übertragen bzw. eine Verbindung zwischen Projekt und dem Rasberry Pi herstellen.
+
+image::01.jpeg[]
+* Wir haben zwischen dem Projekt und dem Raspberry Pi eine Verbindung hergestellt wie es in dem zweiten Screenshot zu sehen ist.
+
+image::03.jpeg[]
+* Prof. Stütz zeigte uns dann wie man Maven & Java auf das Rasberry Pi hinzufügt
+
+== Schritte
+* arp -a
+** mit dem Befehl haben wir die IP-Adresse herausgefunden
+* ssh pi@192.168.178.33 (IP-Adresse)
+** mit diesem Befehl wird eine Verbindung hergestellt
+* Das Passwort für den Zugriff wäre: raspberry
+* sudo raspi-config
+** mit diesem Befehl kommt man zu der Oberfläche des Raspberry Pi's
+
+image::06.jpeg[]
+
+* sudo apt update
+** mit dem Befehl sudo apt-get update werden Paketinformationen
+aus allen konfigurierten Quellen heruntergeladen
+* sudo apt dist-upgrade
+** Der Befehl apt-get dist-upgrade behandelt das Ändern von Abhängigkeiten mit neuen Paketversionen und versucht
+die wichtigsten Pakete bei Bedarf auf Kosten weniger wichtiger zu aktualisieren.
+* env
+** Damit wird geschaut ob JAVA HOME existiert
+* sudo nano /etc/environment
+** Damit wird ein File erstellt zum Setzen von JAVA HOME
+** Drinnen ist  auch der Inhalt von /etc/environment
+
+image::07.jpeg[]
+
+* env | grep JAVA
+** Mit diesem Befehl wird eine Zeile angezeigt und zwar: JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
+* sudo apt install maven
+** Mit diesem Befehl haben wir anschließend Maven installiert
+* mvn -v
+** Zur Überprüfung wird dieser Befehl verwendet
+
+
+
+
+

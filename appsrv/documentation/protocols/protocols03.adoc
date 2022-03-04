@@ -1,0 +1,55 @@
+= Besprechungsprotokoll 12.03.2020
+Sandy Tang
+1.0, 12.03.2020: Some notes
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/htl-leonding-college/asciidoctor-docker-template/master/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/htl-leonding-college/asciidoctor-docker-template] ‏ ‏ ‎
+icon:home[link=https://htl-leonding.github.io/]
+endif::backend-html5[]
+
+
+.Teilnehmer
+|===
+|anwesend |Verteiler
+
+|Vorname Nachname
+|
+|TK
+|
+|TS
+|
+|MR
+|
+
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|Online (Discord)
+
+|von-bis
+|Fr. 12.03.2020
+|Dauer
+|2h
+|===
+
+
+== Besprochene Themen
+* Wir haben einen Fehler im ConsumationRepositoryTest und ConsumationRepository herausgefunden und diesen anschließend behoben.
+* Weiteres haben wir noch im nfc-prototype Projekt diverse dependencies geändert und somit vesucht die main-methode zum Laufen zu bringen dies ist uns noch nicht gelungen.
+
+
+
+
+

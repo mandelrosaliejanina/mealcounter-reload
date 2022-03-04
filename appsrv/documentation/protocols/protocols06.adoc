@@ -1,0 +1,53 @@
+= Besprechungsprotokoll 28.05.2021
+Sandy Tang, Rosalie Mandel
+1.0, 06.05.2021: Some notes
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+
+ifdef::backend-html5[]
+
+icon:file-text-o[link=https://raw.githubusercontent.com/htl-leonding-college/asciidoctor-docker-template/master/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/htl-leonding-college/asciidoctor-docker-template] ‏ ‏ ‎
+icon:home[link=https://htl-leonding.github.io/]
+endif::backend-html5[]
+
+
+.Teilnehmer
+|===
+|anwesend |Verteiler
+
+|Vorname Nachname
+|
+|TS
+|
+|MR
+|
+
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|In der Schule, Präzensunterricht
+
+|von-bis
+|Fr. 28.05.2021
+|Dauer
+|30 min
+|===
+
+
+== Besprochenes Thema
+* ID der SmartCard herausfinden
+
+== Was haben wir gemacht
+* Wir haben mithilfe einer Schleife den Cardreader immer wieder abgefragt, ob eine Karte darauf liegt.
+* Sobald das funktionert hat, haben wir mithilfe eines Code Stückes von apdu4J die ID der Karte ausgelesen.
+* Link zum Commit: https://github.com/htl-leonding-example/apdu4j-demo/commit/bc47feadbab69f9f2b30321e69d8ede150ba91fe
+
+
+
+
+

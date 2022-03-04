@@ -1,0 +1,84 @@
+= Besprechungsprotokoll 29.10.2020
+Kelly Tran
+1.0, 2020-11-06: Some notes
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/htl-leonding-college/asciidoctor-docker-template/master/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/htl-leonding-college/asciidoctor-docker-template] ‏ ‏ ‎
+icon:home[link=https://htl-leonding.github.io/]
+endif::backend-html5[]
+
+
+
+.Teilnehmer
+|===
+|anwesend |Verteiler
+
+|Vorname Nachname
+|
+
+|TK
+|
+
+|TS
+|
+|MR
+|
+
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|Online-Unterricht (Discord)
+
+|von-bis
+|Fr. 26.02.2021
+|Dauer
+|2h
+|===
+
+
+
+== Besprochene Themen
+
+* Wir haben mit der Seite https://nicedoc.io/martinpaljak/apdu4j gearbeitet
+* Die Files von der Seite werden auf den Rasbeery Pi übertragen
+* Herr Prof. Stütz hat uns den Auftrag gegeben ein Maven Projekt zu erstellen und das ganze auszuprobieren
+
+== Schritte
+*  wget https://github.com/nfc-tools/libnfc/releases/download/libnfc-1.8.0/libnfc-doc-1.8.0.zip
+** mit diesem Befehl wurde das Zip File herunter geclont
+* tar -xvzf
+** mit dem Befehl werden die Dateien aus dem Archiven extrahiert
+* chmod +x ./libnfc-doc-1.8.0.zip
+** mit diesem Befehl kann die Datei ausgeführt werden
+* unzip libnfc-doc-1.8.0.zip
+** mit diesem Befehl kann man verschiedene Vorgänge für den Inhalt einer ZIP-Archivdatei ausführen
+* nfc-list
+** das ist eine Bibliothek für NFC's
+* sudo nfc-list
+** mit dem Befehl kann man Programme mit den Sicherheitsberechtigungen eines anderen Benutzers ausführen
+* mem
+** mit dem Befehl mem können Benutzer bestimmen, wie viel Speicher verwendet wird und wie viel verfügbar ist
+* df
+** mit diesem Befehl wird der verfügbare Speicherplatz für Dateisysteme angezeigt
+* java -jar apdu4j.jar -l
+** damit zeigt es den Namen von dem NFC Reader an
+* java -jar apdu4j.jar -w
+** damit wird angezeigt ob die Karte an dem NFC Reader drüber gezogen wurde
+* scp ./apdu4j.jar pi@192.168.178.23
+** mit diesem Befehl werden die Files auf das Raspbeery Pi rüber übertragen
+
+image::08.jpeg[]
+
+

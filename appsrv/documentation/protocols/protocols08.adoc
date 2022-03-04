@@ -1,0 +1,74 @@
+= Besprechungsprotokoll 28.05.2021
+Sandy Tang, Rosalie Mandel, Kelly Tran
+1.0, 06.05.2021: Some notes
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+
+ifdef::backend-html5[]
+
+icon:file-text-o[link=https://raw.githubusercontent.com/htl-leonding-college/asciidoctor-docker-template/master/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/htl-leonding-college/asciidoctor-docker-template] ‏ ‏ ‎
+icon:home[link=https://htl-leonding.github.io/]
+endif::backend-html5[]
+
+
+.Teilnehmer
+|===
+|anwesend |Verteiler
+
+|Vorname Nachname
+|
+|TS
+|
+|MR
+|
+
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+
+|In der Schule
+
+|von-bis
+|08:55-09:45, 10:00-10:50
+|Dauer
+|1h 30min
+|===
+== Was haben wir gemacht
+
+* Shell-Skript schreiben fürs Automatische herausfinden der internen Ip-Adresse des Raspberry-Pi's, sodass wir uns mit dem Raspberry verbinden können ohne Router.
+* Einloggen in Raspberry-Pi ohne Passwort und Router-> ssh pi.
+
+=== No-Ip
+    ping nfcmeal.ddns.net
+    curl
+    curl 'http://tangsandy:Klaw9Om7@dynupdate.no-ip.com/nic/update?hostname=nfcmeal.ddns.net&myip=172.17.209.132'
+    ifconfig
+
+=== Service
+    [Unit]
+    After=network-online.target
+    Want=network-online.target
+    Description=update ip adress on start up
+    [Service]
+    Type=forking
+    ExecStart=/usr/local/bin/nfcMealCounter/script.sh
+    User=root
+    [Install]
+    After=network-online.target
+    WantedBy=multi-user.target
+
+
+=== Anmelden nur mit ssh pi
+    ssh pi@nfcmeal.ddns.net
+    ls .ssh
+    ssh-copy-id pi@nfcmeal.ddns.net
+    ssh pi@nfcmeal.ddns.net
+    cd .ssh
+    code .
+    nano config
+    ssh pi

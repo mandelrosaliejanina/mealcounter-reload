@@ -30,15 +30,5 @@ services:
       - 8080
     depends_on:
       - db
-  nginx:
-    image: ghcr.io/mandelrosaliejanina/mealcounter-reload-nginx:latest
-    deploy:
-      restart_policy:
-        condition: on-failure
-        max_attempts: 3
-    ports:
-      - 80:80
-    depends_on:
-      - appsrv
 volumes:
   database:

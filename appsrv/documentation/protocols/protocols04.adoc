@@ -1,0 +1,65 @@
+= Besprechungsprotokoll 06.05.2021
+Sandy Tang, Rosalie Mandel, Kelly Tran
+1.0, 06.05.2021: Some notes
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/htl-leonding-college/asciidoctor-docker-template/master/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/htl-leonding-college/asciidoctor-docker-template] ‏ ‏ ‎
+icon:home[link=https://htl-leonding.github.io/]
+endif::backend-html5[]
+
+
+.Teilnehmer
+|===
+|anwesend |Verteiler
+
+|Vorname Nachname
+|
+|TK
+|
+|TS
+|
+|MR
+|
+
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|In der Schule, Präzensunterricht
+
+|von-bis
+|Do. 06.05.2021
+|Dauer
+|2h
+|===
+
+
+== Schritte
+* java -jar ~/lib/apdu4j.jar -v -l
+** Reader anzeigen von Martin
+.............
+* mvn clean package
+** SNAPSHOT.jar erstellen
+* java -jar apdu-demo-1.0-SNAPSHOT.ja
+** das Ausgeben von true or false, und der Kartennummer
+
+
+== Besprochene Themen
+* Mit Smart Card auseinandersetzen, Tutorials anschauen wie man mit der Karte Benutzernamen und Daten einliest. (http://www.java2s.com/example/java/javax.smartcardio/read-card-data.html)
+
+
+
+
+
+
