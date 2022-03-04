@@ -1,0 +1,19 @@
+@startuml
+
+[*] --> initial
+
+initial -> cardNotFound
+initial : Connection open
+
+cardNotFound -> cardFound : Card put on reader
+cardNotFound : if so send card id
+
+cardFound -down-> cardNotFound : Card is removed
+cardFound : until card is not found
+
+cardNotFound -right-> final
+final : Connection close
+final --> [*]
+
+
+@enduml
