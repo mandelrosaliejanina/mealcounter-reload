@@ -84,7 +84,6 @@ public class MifareReader {
         os = port.getOutputStream();
 
         var greeting = new byte[]{0x02, 0x03, 0x05};
-        //var response = new byte[]{0x06, 0x03, 0x32, 0x78, 0x13, (byte) 0x0E8, (byte) 0x0AE};
         var response = new byte[]{0x06, 0x03, 0x32, 0x78, 0x13, (byte) 0x0E8, (byte) 0x0AE};
 
         byte[] bytes = getId(os, greeting);
@@ -115,14 +114,15 @@ public class MifareReader {
             in.close();
         } catch (SerialPortTimeoutException ex) {
             System.out.println("not found");
+            ex.printStackTrace();
             returnBuffer = null;
         } catch (SerialPortIOException e) {
-            System.out.println("failed");
+            System.out.println("failed ");
+            e.printStackTrace();
             returnBuffer = null;
         } catch (Exception e) {
             e.printStackTrace();
             returnBuffer = null;
-
         }
         return returnBuffer;
     }
@@ -150,11 +150,12 @@ public class MifareReader {
             System.out.println();
             in.close();
         } catch (SerialPortTimeoutException ex) {
+            ex.printStackTrace();
             System.out.println("not found");
         } catch (SerialPortIOException e) {
+            e.printStackTrace();
             System.out.println("failed");
-        } catch (
-                Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return ok;

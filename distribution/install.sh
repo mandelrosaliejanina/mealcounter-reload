@@ -26,7 +26,7 @@ then
 else
     apt -y update || (echo "update failed" && exit 1)
     apt -y upgrade
-    apt -y install docker-compose net-tools ||  (echo "installation failed" && exit 2)
+    apt -y install docker-compose net-tools nginx ||  (echo "installation failed" && exit 2)
     echo "add user to docker group..."
     usermod -aG docker $SERVER_USER || echo "usermod not required"
     echo "write marker file..."
@@ -69,6 +69,8 @@ echo $ACCESS_TOKEN | docker login --username $GITHUB_USER --password-stdin
 
 docker image ls
 docker-compose pull
+
+scp -r $SCRIPT_DIR/../www/dist/* server:/var/www/html
 
 if [[ $REBOOT -eq 0 ]]
 then
