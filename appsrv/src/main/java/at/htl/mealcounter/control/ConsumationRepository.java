@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @ApplicationScoped
@@ -40,6 +41,12 @@ public class ConsumationRepository implements PanacheRepository<Consumation> {
         }
 
         return consumation;
+    }
+
+    public List<Consumation> findByNfcId(String nfcId) {
+        var query = em.createQuery("select c from Consumation c join  c.person p join p.nfcCard nfc where nfc.nfcId = :nfcId",
+                Consumation.class ).setParameter("nfcId", nfcId);
+        return query.getResultList();
     }
 
 }
