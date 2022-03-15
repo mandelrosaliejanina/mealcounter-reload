@@ -36,6 +36,9 @@ public class NfcEndpoint {
     @Inject
     PersonRepository personRepository;
 
+    @Inject
+    WebSocket webSocket;
+
     @GET
     public Response findAll() {
         return Response.ok(nfcRepository.findAll()).build();
@@ -83,6 +86,10 @@ public class NfcEndpoint {
         System.out.println(url);
 
         nfcRepository.persist(nfcCard);
+
+        var consumations = consumationRepository.findByNfcId(nfcCard.nfcId);
+
+        webSocket.broadcastConsumations(consumations);
         return Response
                 .created(URI.create(url))
                 .build();
