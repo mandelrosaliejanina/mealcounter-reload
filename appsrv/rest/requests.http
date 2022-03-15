@@ -83,4 +83,13 @@ Content-Type: application/json
 // i dont understand this endpoint
 POST http://localhost:8080/api/device/device
 
+###
+POST http://localhost:8080/api/nfccard/create
+Content-Type: application/json
+
+{
+  "nfcId": "122",
+  "registerDateTime": 12
+}
+
 
