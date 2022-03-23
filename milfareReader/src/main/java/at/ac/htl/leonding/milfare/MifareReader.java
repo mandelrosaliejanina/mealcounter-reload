@@ -110,7 +110,7 @@ public class MifareReader {
             }
             returnBuffer = Arrays.copyOfRange(buffer, 0, 6);
 
-            System.out.println();
+            System.out.println("----");
             in.close();
         } catch (SerialPortTimeoutException ex) {
             System.out.println("not found");
@@ -147,7 +147,7 @@ public class MifareReader {
             if (Arrays.equals(buffer, response)) {
                 ok = true;
             }
-            System.out.println();
+            System.out.println("+++++");
             in.close();
         } catch (SerialPortTimeoutException ex) {
             ex.printStackTrace();
@@ -168,7 +168,7 @@ public class MifareReader {
 
     public void close() {
         port.closePort();
-        System.out.println("");
+        System.out.println("closed");
     }
 
     public String encodeHexString(byte[] byteArray) {

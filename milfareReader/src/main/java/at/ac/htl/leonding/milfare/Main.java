@@ -5,53 +5,78 @@ import com.fazecast.jSerialComm.SerialPort;
 import java.io.IOException;
 
 public class Main {
-    static MifareReader reader;
+    MifareReader reader;
+
     enum State {
         initial,
         cardFound,
         cardNotFound,
+        idFound,
+        card,
         end
     }
-    static State state = State.initial;
 
-    public static void main(String[] args) throws IOException {
-        String id= "";
+    String lastIdSend = "";
+    State state = State.initial;
+
+    public void run(String[] args) throws IOException {
+        String id = "";
         findReader();
-        while(state != State.end) {
+        while (state != State.end) {
 
-            switch (state){
+            switch (state) {
                 case initial:
-                     reader.open();
-                     state = State.cardNotFound;
-                     break;
+                    reader.open();
+                    setState(State.cardNotFound);
+                    break;
                 case cardNotFound:
-                    if(id == null){
+                    if (id == null) {
                         id = "";
                     }
-                    if(!id.equals("")){
-                        TagLoader tagLoader = new TagLoader();
-                        tagLoader.sendData("http://152.70.175.53/api/nfccard/create", id);
-                        System.out.println("data is send");
-                        break;
-                    }
-                    id = reader.anticollision();
-                    if(id != null){
-                        state = State.cardFound;
-                    }
-                case cardFound:
-                    if(reader.enquiryCard()){
-                        var cardstate = reader.enquiryCard(); // if card is present enquiryCard is false
-                        state = State.cardNotFound;
+                    boolean cardFound = reader.enquiryCard();
+                    if (cardFound) {
+                        setState(State.cardFound);
                     }
                     break;
+                case cardFound:
+                    id = reader.anticollision();
+                    if (id != null) {
+                        setState(State.idFound);
+                    }
+                    break;
+                case idFound:
+                    if (!id.equals(lastIdSend)) {
+                        try {
+                            TagLoader tagLoader = new TagLoader();
+                            tagLoader.sendData("http://141.147.28.105/api/nfccard/create", id);
+                            System.out.println("data is send");
+                            reader.close();
+                            setState(State.initial);
+                        }catch (Exception e){
+                           e.printStackTrace();
+                        }
+
+                    }
+                    setState(State.cardNotFound);
+                    break;
                 default:
-                    System.out.println("Falsche Zustand");
+                    System.out.println("Falscher Zustand");
                     break;
             }
         }
     }
 
-    private static void findReader() {
+
+    public static void main(String[] args) {
+        var main = new Main();
+        try {
+            main.run(args);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void findReader() {
         reader = MifareReader.findReader();
         System.out.println("Reader: " + reader.toString());
         reader.open();
@@ -59,6 +84,11 @@ public class Main {
         reader.close();
     }
 
+
+    private void setState(State state) {
+        this.state = state;
+        System.out.println("setting state" + state.name());
+    }
 /*    byte[] prot ={
         "enquiry_module": "\x03\x12\x00\x15",
                 'enquiry_module_return': '\x02\x12\x14',
@@ -74,7 +104,7 @@ public class Main {
         var reader = new MifareReader(comPort);
         reader.open();
         var isOpen = reader.hello();
-        System.out.println(isOpen? "open" : "closed");
+        System.out.println(isOpen ? "open" : "closed");
         reader.close();
         return isOpen;
     }
