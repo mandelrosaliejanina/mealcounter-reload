@@ -15,6 +15,11 @@ export interface NfcCard {
   registerDateTime: Date;
 }
 
+export interface NfcCardInfo {
+  nfcId: string;
+  registerDateTime: number;
+}
+
 export interface Consumation {
   id: number;
   person: Person;
@@ -33,7 +38,7 @@ export class MealsOverviewComponent implements OnInit {
 
   consumations: Consumation[];
   displayedColumns: string[] = ['id', 'personId', 'date', 'hasConsumed'];
-  private socket: WebSocket<NfcCard> | null;
+  private socket: WebSocket<Consumation[]> | null;
 
 
   constructor(private readonly backend: BackendService) {
@@ -47,11 +52,11 @@ export class MealsOverviewComponent implements OnInit {
       this.consumations = value as Consumation[];
       console.log(this.consumations)
     });
-    this.socket = new WebSocket<NfcCard>('ws://localhost:8080/start-websocket/kelly');
+    this.socket = new WebSocket<Consumation[]>('ws://localhost:8080/start-websocket/test');
     this.socket.connect();
-    this.socket.sendMessage({nfcId:'12', registerDateTime:new Date() });
+    // this.socket.sendMessage({nfcId:'12', registerDateTime:new Date() });
     this.socket.messages.subscribe(data => {
-      console.log(data)
+      console.log(JSON.stringify(data))
     })
   }
 }
