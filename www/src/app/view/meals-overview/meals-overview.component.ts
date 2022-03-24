@@ -52,7 +52,7 @@ export class MealsOverviewComponent implements OnInit {
       this.consumations = value as Consumation[];
       console.log(this.consumations)
     });
-    this.socket = new WebSocket<Consumation[]>('ws://localhost:8080/start-websocket/test');
+    this.socket = new WebSocket<Consumation[]>('ws://141.147.28.105/start-websocket/test');
     this.socket.connect();
     // this.socket.sendMessage({nfcId:'12', registerDateTime:new Date() });
     this.socket.messages.subscribe(data => {

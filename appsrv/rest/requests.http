@@ -88,7 +88,7 @@ POST http://localhost:8080/api/nfccard/create
 Content-Type: application/json
 
 {
-  "nfcId": "122",
+  "nfcId": "060367a5fe00",
   "registerDateTime": 12
 }
 
