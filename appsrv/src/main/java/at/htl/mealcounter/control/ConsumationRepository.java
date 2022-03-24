@@ -10,6 +10,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 
@@ -24,23 +26,25 @@ public class ConsumationRepository implements PanacheRepository<Consumation> {
     PersonRepository personRepository;
 
 
-    public Consumation findByDateAndPerson(LocalDate myDate, Person person) {
+    public boolean canConsumeToday(Person person) {
 
         Consumation consumation;
+        LocalDate ld = LocalDate.now();
 
         try {
             consumation = em.createQuery("select c from Consumation c where " +
-                            "c.date = :DATE AND " +
-                            "c.person.id = :ID", Consumation.class)
-                    .setParameter("DATE", myDate)
+                            "c.person.id = :ID and " +
+                            "c.date >= :DATE", Consumation.class)
+                    .setParameter("DATE", LocalDateTime.of(ld, LocalTime.MIDNIGHT))
                     .setParameter("ID", person.getId())
-                    .getSingleResult();
+                    .getResultStream().findFirst().orElse(null);
 
         } catch (NoResultException e) {
             consumation = null;
         }
-
-        return consumation;
+        System.out.println(consumation);
+        System.out.println(consumation == null);
+        return consumation == null;
     }
 
     public List<Consumation> findByNfcId(String nfcId) {

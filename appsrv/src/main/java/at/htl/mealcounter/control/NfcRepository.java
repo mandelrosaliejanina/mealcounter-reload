@@ -58,4 +58,8 @@ public class NfcRepository implements PanacheRepository<NfcCard> {
                 .setParameter("id", nfcId)
                 .getSingleResult() == 1;
     }
+
+    public NfcCard merge(NfcCard nfcCard){
+        return em.merge(nfcCard);
+    }
 }

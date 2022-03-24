@@ -64,7 +64,7 @@ public class TagLoader {
             os.flush();
 
             if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-                throw new RuntimeException("Failed : HTTP error code : "
+                System.out.println("Failed : HTTP error code : "
                         + conn.getResponseCode());
             }
 
@@ -80,9 +80,7 @@ public class TagLoader {
             conn.disconnect();
 
         } catch (IOException e) {
-
-            e.printStackTrace();
-
+            System.out.println(e.getMessage());
         }
 
     }

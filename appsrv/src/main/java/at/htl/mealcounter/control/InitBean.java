@@ -1,6 +1,7 @@
 package at.htl.mealcounter.control;
 
 
+import at.htl.mealcounter.entity.Consumation;
 import at.htl.mealcounter.entity.NfcCard;
 import at.htl.mealcounter.entity.Person;
 import io.quarkus.runtime.StartupEvent;
@@ -39,6 +40,8 @@ public class InitBean {
         personRepository.persist(sandy);
         Person kelly = new Person(nfcRepository.findByNfcId("060317f2fb00"),"Kelly","Tran",2012);
         personRepository.persist(kelly);
+
+
 
     }
 

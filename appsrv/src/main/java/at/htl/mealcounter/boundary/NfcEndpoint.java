@@ -81,11 +81,15 @@ public class NfcEndpoint {
             NfcCard nfcCard1 = new NfcCard();
             nfcCard1.nfcId = nfcCardDto.nfcId;
             nfcCard1.registerDateTime = date;
-            nfcRepository.persist(nfcCard1);
+            nfcCard = nfcRepository.merge(nfcCard1);
         } else {
             Person person = personRepository.findPersonByNfcCard(nfcCardDto.nfcId);
-            Consumation consumation = new Consumation(person, LocalDateTime.now(), true);
-            consumationRepository.merge(consumation);
+           if(consumationRepository.canConsumeToday(person)){
+               Consumation consumation = new Consumation(person, LocalDateTime.now(), true);
+               consumationRepository.merge(consumation);
+           }else{
+               return Response.status(Response.Status.BAD_REQUEST).build();
+           }
         }
 
 
@@ -98,6 +102,13 @@ public class NfcEndpoint {
         return Response
                 .created(URI.create(url))
                 .build();
+    }
+
+    @GET
+    @Path("date")
+    public Response get(){
+        Person person = personRepository.findById(1L);
+        return Response.ok(consumationRepository.canConsumeToday(person)).build();
     }
 
 //

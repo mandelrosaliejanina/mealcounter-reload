@@ -36,7 +36,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://152.70.175.53/api/nfccard/create
+POST http://localhost:8080/api/nfccard/create
 Content-Type: application/json
 
 {
@@ -88,8 +88,12 @@ POST http://localhost:8080/api/nfccard/create
 Content-Type: application/json
 
 {
-  "nfcId": "060367a5fe00",
+  "nfcId": "0603e7e30000",
   "registerDateTime": 12
 }
+
+###
+
+GET  http://localhost:8080/api/nfccard/date
 
 

@@ -150,13 +150,11 @@ public class MifareReader {
             System.out.println("+++++");
             in.close();
         } catch (SerialPortTimeoutException ex) {
-            ex.printStackTrace();
             System.out.println("not found");
         } catch (SerialPortIOException e) {
-            e.printStackTrace();
             System.out.println("failed");
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
         return ok;
     }
