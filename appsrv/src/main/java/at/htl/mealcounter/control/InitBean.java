@@ -2,6 +2,7 @@ package at.htl.mealcounter.control;
 
 
 import at.htl.mealcounter.entity.NfcCard;
+import at.htl.mealcounter.entity.Person;
 import io.quarkus.runtime.StartupEvent;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -31,6 +32,14 @@ public class InitBean {
 
         NfcCard nfcCard1 = new NfcCard("abc");
         nfcRepository.persist(nfcCard1);
+
+        Person rosi = new Person(nfcRepository.findByNfcId("0603e7e30000"),"Rosalie","Mandel",2012);
+        personRepository.persist(rosi);
+        Person sandy = new Person(nfcRepository.findByNfcId("060317f2fb01"),"Sandy","Tang",2012);
+        personRepository.persist(sandy);
+        Person kelly = new Person(nfcRepository.findByNfcId("060317f2fb02"),"Kelly","Tran",2012);
+        personRepository.persist(kelly);
+
     }
 
 }

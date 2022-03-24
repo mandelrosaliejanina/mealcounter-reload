@@ -1,12 +1,8 @@
-insert into m_person (first_name, last_name, entry_year,nfc_card) values ('Scarlett','Nolan',2014, '060367a5fe00');
-insert into m_person (first_name, last_name, entry_year, nfc_card) values ('Willow','Rowe',2014, '060317f2fb00');
 
+insert into m_nfc_card(nfc_id, register_date_time) values ('0603e7e30000',current_date);
+insert into m_nfc_card(nfc_id, register_date_time) values ('060317f2fb01',current_date);
+insert into m_nfc_card(nfc_id, register_date_time) values ('060317f2fb02',current_date);
 
-
-insert into m_consumation (person_id, date, hasConsumed) values (1,'02/04/2015',true);
-insert into m_consumation (person_id, date, hasConsumed) values (2,'04/04/2015',false);
-insert into m_consumation (person_id, date, hasConsumed) values (3,'06/04/2015',true);
-insert into m_consumation (person_id, date, hasConsumed) values (4,'08/04/2015',false);
 
 
 

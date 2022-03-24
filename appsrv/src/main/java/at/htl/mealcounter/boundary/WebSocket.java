@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@ServerEndpoint(value = "/start-websocket/{name}",encoders = JsonMessageEncoder.class)
+@ServerEndpoint(value = "/api/start-websocket/{name}",encoders = JsonMessageEncoder.class)
 @ApplicationScoped
 public class WebSocket {
 

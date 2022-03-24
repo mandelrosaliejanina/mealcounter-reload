@@ -49,4 +49,8 @@ public class ConsumationRepository implements PanacheRepository<Consumation> {
         return query.getResultList();
     }
 
+    public void merge(Consumation consumation) {
+        em.merge(consumation);
+    }
+
 }
