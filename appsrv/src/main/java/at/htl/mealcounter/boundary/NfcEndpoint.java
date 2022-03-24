@@ -88,7 +88,7 @@ public class NfcEndpoint {
         }else {
             Person person = personRepository.findPersonByNfcCard(nfcCardDto.nfcId);
             Consumation consumation = new Consumation(person,LocalDateTime.now(),true);
-            consumationRepository.persist(consumation);
+            consumationRepository.merge(consumation);
         }
 
 
@@ -97,9 +97,9 @@ public class NfcEndpoint {
 
 
 
-//        var consumations = consumationRepository.findByNfcId(nfcCard.nfcId);
-//
-//        webSocket.broadcastConsumations(consumations);
+        var consumations = consumationRepository.findByNfcId(nfcCard.nfcId);
+
+          webSocket.broadcastConsumations(consumations);
         return Response
                 .created(URI.create(url))
                 .build();
