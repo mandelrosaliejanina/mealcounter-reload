@@ -30,8 +30,14 @@ public class NfcRepository implements PanacheRepository<NfcCard> {
 
 
     public NfcCard findByNfcId(String nfcId) {
-        return em.createQuery("select n from NfcCard n where n.nfcId = :id", NfcCard.class)
-                .setParameter("id", nfcId).getSingleResult();
+        NfcCard nfcCard = null;
+
+         var nfcCards = em.createQuery("select n from NfcCard n where n.nfcId = :id", NfcCard.class)
+                .setParameter("id", nfcId).getResultList();
+        if(nfcCards.size() > 0) {
+            nfcCard = nfcCards.get(0);
+        }
+        return nfcCard;
     }
 
 

@@ -74,24 +74,28 @@ public class NfcEndpoint {
     @POST
     @Path("/create")
     public Response create(NfcCardDto nfcCardDto, @Context UriInfo info) {
-        Person person = personRepository.findPersonByNfcCard(nfcCardDto.nfcId);
-
-        Consumation consumation = new Consumation(person,LocalDateTime.now().plusHours(1 ),true);
-        consumationRepository.persist(consumation);
 
         Date input = new Date(nfcCardDto.registerDateTime);
         LocalDateTime date = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 
-        var nfcCard = new NfcCard();
-        nfcCard.nfcId = nfcCardDto.nfcId;
-        nfcCard.registerDateTime = date;
+        var nfcCard = nfcRepository.findByNfcId(nfcCardDto.nfcId);
 
+        if (nfcCard == null) {
+            NfcCard nfcCard1 = new NfcCard();
+            nfcCard1.nfcId = nfcCardDto.nfcId;
+            nfcCard1.registerDateTime = date;
+            nfcRepository.persist(nfcCard1);
+        }else {
+            Person person = personRepository.findPersonByNfcCard(nfcCardDto.nfcId);
+            Consumation consumation = new Consumation(person,LocalDateTime.now(),true);
+            consumationRepository.persist(consumation);
+        }
 
 
         var url= info.getAbsolutePathBuilder().path(nfcCard.nfcId).build().toString();
 
 
-        nfcRepository.persist(nfcCard);
+
 
 //        var consumations = consumationRepository.findByNfcId(nfcCard.nfcId);
 //
