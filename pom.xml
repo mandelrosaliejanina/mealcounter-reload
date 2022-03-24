@@ -15,8 +15,8 @@
     <build.unknown>UNKNOWN</build.unknown>
     <build.number>${build.unknown}</build.number>
     <build.revision>${build.unknown}</build.revision>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
 
   </properties>
 
