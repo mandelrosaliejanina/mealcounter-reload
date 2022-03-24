@@ -47,16 +47,21 @@ export class MealsOverviewComponent implements OnInit {
     this.socket = null;
   }
 
-  ngOnInit(): void {
+  fetch() {
     this.backend.get('consumation').then(value => {
       this.consumations = value as Consumation[];
       console.log(this.consumations)
     });
-    this.socket = new WebSocket<Consumation[]>('ws://141.147.28.105/start-websocket/test');
+  }
+
+  ngOnInit(): void {
+    this.fetch();
+    this.socket = new WebSocket<Consumation[]>('ws://localhost:8080/api/start-websocket/test');
     this.socket.connect();
     // this.socket.sendMessage({nfcId:'12', registerDateTime:new Date() });
     this.socket.messages.subscribe(data => {
       console.log(JSON.stringify(data))
+      this.fetch();
     })
   }
 }
