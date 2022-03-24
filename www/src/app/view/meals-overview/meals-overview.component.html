@@ -1,16 +1,15 @@
-<table *ngIf="consumations">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><table *ngIf="consumations">
   <tr>
     <th> ID</th>
-    <th> PERSON ID</th>
-    <th> DATE</th>
-    <th> HAS CONSUMED</th>
+    <th> Schüler Name</th>
+    <th>Datum</th>
+    <th> Essen bekommen</th>
   </tr>
 
   <tr *ngFor="let consumation of consumations">
     <td> {{consumation.id}}</td>
-    <td> {{consumation.person.id}}</td>
-    <td> {{consumation.date}}</td>
-    <td> {{consumation.hasConsumed}}</td>
-  </tr>
+    <td> {{consumation.person.firstName}} {{ consumation.person.lastName }}</td>
+    <td> {{consumation.date || 'yyyy/mm/dd:hh:mm:ss'}}</td>
+    <td *ngIf="consumation.hasConsumed"> <i class="material-icons">check</i></td>  </tr>
 </table>
 
