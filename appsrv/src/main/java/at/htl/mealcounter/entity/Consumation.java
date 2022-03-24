@@ -6,6 +6,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import javax.json.bind.annotation.JsonbDateFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "M_CONSUMATION")
@@ -23,7 +24,7 @@ public class Consumation extends PanacheEntityBase {
 
     @Column(name = "DATE")
     @JsonbDateFormat(value = "dd/MM/yyyy")
-    private LocalDate date;
+    private LocalDateTime date;
 
     @Column(name = "HASCONSUMED")
     private boolean hasConsumed;
@@ -31,7 +32,7 @@ public class Consumation extends PanacheEntityBase {
     public Consumation() {
     }
 
-    public Consumation(Person person, LocalDate date, boolean hasConsumed) {
+    public Consumation(Person person, LocalDateTime date, boolean hasConsumed) {
         this.person = person;
         this.date = date;
         this.hasConsumed = hasConsumed;
@@ -56,11 +57,11 @@ public class Consumation extends PanacheEntityBase {
         this.person = person;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
