@@ -8,17 +8,14 @@ import at.htl.mealcounter.entity.Consumation;
 import at.htl.mealcounter.entity.NfcCard;
 import at.htl.mealcounter.entity.Person;
 
-import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.json.bind.annotation.JsonbDateFormat;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -85,21 +82,19 @@ public class NfcEndpoint {
             nfcCard1.nfcId = nfcCardDto.nfcId;
             nfcCard1.registerDateTime = date;
             nfcRepository.persist(nfcCard1);
-        }else {
+        } else {
             Person person = personRepository.findPersonByNfcCard(nfcCardDto.nfcId);
-            Consumation consumation = new Consumation(person,LocalDateTime.now(),true);
+            Consumation consumation = new Consumation(person, LocalDateTime.now(), true);
             consumationRepository.merge(consumation);
         }
 
 
-        var url= info.getAbsolutePathBuilder().path(nfcCard.nfcId).build().toString();
-
-
+        var url = info.getAbsolutePathBuilder().path(nfcCard.nfcId).build().toString();
 
 
         var consumations = consumationRepository.findByNfcId(nfcCard.nfcId);
 
-          webSocket.broadcastConsumations(consumations);
+        webSocket.broadcastConsumations(consumations);
         return Response
                 .created(URI.create(url))
                 .build();

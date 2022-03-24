@@ -50,14 +50,16 @@ public class Main {
                             TagLoader tagLoader = new TagLoader();
                             tagLoader.sendData("http://localhost:8080/api/nfccard/create", id);
                             System.out.println("data is send");
+                            lastIdSend = id;
                             reader.close();
                             setState(State.initial);
                         }catch (Exception e){
                            e.printStackTrace();
                         }
 
+                    }else {
+                        setState(State.cardNotFound);
                     }
-                    setState(State.cardNotFound);
                     break;
                 default:
                     System.out.println("Falscher Zustand");

@@ -1,7 +1,7 @@
 
 insert into m_nfc_card(nfc_id, register_date_time) values ('0603e7e30000',current_date);
-insert into m_nfc_card(nfc_id, register_date_time) values ('060317f2fb01',current_date);
-insert into m_nfc_card(nfc_id, register_date_time) values ('060317f2fb02',current_date);
+insert into m_nfc_card(nfc_id, register_date_time) values ('060367a5fe00',current_date);
+insert into m_nfc_card(nfc_id, register_date_time) values ('060317f2fb00',current_date);
 
 
 

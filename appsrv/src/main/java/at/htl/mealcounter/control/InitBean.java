@@ -35,9 +35,9 @@ public class InitBean {
 
         Person rosi = new Person(nfcRepository.findByNfcId("0603e7e30000"),"Rosalie","Mandel",2012);
         personRepository.persist(rosi);
-        Person sandy = new Person(nfcRepository.findByNfcId("060317f2fb01"),"Sandy","Tang",2012);
+        Person sandy = new Person(nfcRepository.findByNfcId("060367a5fe00"),"Sandy","Tang",2012);
         personRepository.persist(sandy);
-        Person kelly = new Person(nfcRepository.findByNfcId("060317f2fb02"),"Kelly","Tran",2012);
+        Person kelly = new Person(nfcRepository.findByNfcId("060317f2fb00"),"Kelly","Tran",2012);
         personRepository.persist(kelly);
 
     }
