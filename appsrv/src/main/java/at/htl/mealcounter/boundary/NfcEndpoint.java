@@ -4,7 +4,9 @@ import at.htl.mealcounter.control.ConsumationRepository;
 import at.htl.mealcounter.control.NfcRepository;
 import at.htl.mealcounter.control.PersonRepository;
 import at.htl.mealcounter.dto.NfcCardDto;
+import at.htl.mealcounter.entity.Consumation;
 import at.htl.mealcounter.entity.NfcCard;
+import at.htl.mealcounter.entity.Person;
 
 import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
@@ -72,6 +74,10 @@ public class NfcEndpoint {
     @POST
     @Path("/create")
     public Response create(NfcCardDto nfcCardDto, @Context UriInfo info) {
+        Person person = personRepository.findPersonByNfcCard(nfcCardDto.nfcId);
+
+        Consumation consumation = new Consumation(person,LocalDateTime.now().plusHours(1 ),true);
+        consumationRepository.persist(consumation);
 
         Date input = new Date(nfcCardDto.registerDateTime);
         LocalDateTime date = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
@@ -83,13 +89,13 @@ public class NfcEndpoint {
 
 
         var url= info.getAbsolutePathBuilder().path(nfcCard.nfcId).build().toString();
-        System.out.println(url);
+
 
         nfcRepository.persist(nfcCard);
 
-        var consumations = consumationRepository.findByNfcId(nfcCard.nfcId);
-
-        webSocket.broadcastConsumations(consumations);
+//        var consumations = consumationRepository.findByNfcId(nfcCard.nfcId);
+//
+//        webSocket.broadcastConsumations(consumations);
         return Response
                 .created(URI.create(url))
                 .build();
