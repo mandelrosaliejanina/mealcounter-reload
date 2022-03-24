@@ -48,7 +48,7 @@ public class Main {
                     if (!id.equals(lastIdSend)) {
                         try {
                             TagLoader tagLoader = new TagLoader();
-                            tagLoader.sendData("http://141.147.28.105/api/nfccard/create", id);
+                            tagLoader.sendData("http://localhost:8080/api/nfccard/create", id);
                             System.out.println("data is send");
                             reader.close();
                             setState(State.initial);
