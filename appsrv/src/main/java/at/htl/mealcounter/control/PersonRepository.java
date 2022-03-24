@@ -43,4 +43,8 @@ public class PersonRepository implements PanacheRepository<Person> {
         return em.createQuery("select p from Person p where p.entryYear = :entryYear", Person.class)
                 .setParameter("entryYear", entryYear).getResultList();
     }
+    public Person findPersonByNfcCard(String id) {
+        return em.createQuery("select p from Person p where p.nfcCard.nfcId = :id", Person.class)
+                .setParameter("id", id).getResultStream().findFirst().orElse(null);
+    }
 }
